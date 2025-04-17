@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1671202352 source:c:\users\zehra\desktop\proje2\main.c
+	<stdlib.h>
+	<math.h>
+

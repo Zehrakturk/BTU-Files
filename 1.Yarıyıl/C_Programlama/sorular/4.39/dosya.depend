@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1660765226 source:c:\users\zehra\desktop\dosya\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1660767225 source:c:\users\zehra\desktop\4.39\main.c
+	<stdio.h>
+	<stdlib.h>
+

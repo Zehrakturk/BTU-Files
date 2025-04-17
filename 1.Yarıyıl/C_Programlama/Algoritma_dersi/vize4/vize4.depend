@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1667741487 source:c:\users\zehra\desktop\vize4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

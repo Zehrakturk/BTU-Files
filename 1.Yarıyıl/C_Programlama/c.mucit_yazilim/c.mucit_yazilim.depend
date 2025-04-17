@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1666006850 source:c:\users\zehra\desktop\yeni klasör\c.mucit_yazilim\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

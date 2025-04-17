@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1667739775 source:c:\users\zehra\desktop\algoritma_dersi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+
+1672054265 source:c:\users\zehra\desktop\yeni klasör\algoritma_dersi\labdakiler\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	<stdarg.h>
+

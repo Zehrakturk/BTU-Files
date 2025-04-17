@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1668803865 source:c:\users\zehra\desktop\yeni klasör\algoritma_dersi\vize5\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

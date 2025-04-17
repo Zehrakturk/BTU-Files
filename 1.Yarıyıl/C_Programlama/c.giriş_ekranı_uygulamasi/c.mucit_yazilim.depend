@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1665919439 source:c:\users\zehra\desktop\c.mucit_yazilim\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<locale.h>
+
+1665993314 source:c:\users\zehra\desktop\yeni klasör\c.giriþ_ekraný_uygulamasi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<locale.h>
+

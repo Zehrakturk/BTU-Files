@@ -1,0 +1,531 @@
+1. AKLIMA GELEN YOL
+void sinavi_uygula(char ogrenci_cevaplari[][100],char cevap_anahtari[],int N,int S,double D,double B)
+{
+    int indis[S];
+    int i,j,k,a;
+    for(j=0;j<N;j++)
+    {
+        for(i=0;i<S*D;i++)
+        {
+            a=rand()%(S);
+            indis[i]=a;
+            ogrenci_cevaplari[j][a]=cevap_anahtari[a];
+        }
+    }
+    printf("\nOGRENCILERIN CEVAPLARI:\n");
+    for(int i=1; i<=N; i++)
+    {
+        for(int j=1;j<=S;j++)
+        {
+            printf(" %0.3d:",j);
+             printf(" %c |",ogrenci_cevaplari[i][j]);
+        }
+    printf("\n");
+    }
+
+
+}
+
+2.AKLIMA GELEN YOL
+void sinavi_uygula(char ogrenci_cevaplari[][100],char cevap_anahtari[],int N,int S,double D,double B)
+{
+    int i,j;
+    srand(time(0));
+
+    for(int i=1; i<=N; i++)
+    {
+
+        for(j=1; j<=S; j++)
+        {
+            if(B>0.5)
+            {
+                char yanlis_ihtimal[10]={'B','C','D','E','X','X','X','X','X'};
+                ogrenci_cevaplari[i][j]=yanlis_ihtimal[rand()%9];
+            }
+            else if(D>0.5)
+            {
+                ogrenci_cevaplari[i][j]=cevap_anahtari[i];
+            }
+            else
+            {
+                if(cevap_anahtari[i]=='A')
+                {
+                   char yanlis_ihtimal[5]={'B','C','D','E'};
+                    ogrenci_cevaplari[i][j]=yanlis_ihtimal[rand()%4];
+                }
+                else if(cevap_anahtari[i]=='B')
+                {
+                   char yanlis_ihtimal[5]= {'A','C','D','E'};
+                    ogrenci_cevaplari[i][j]=yanlis_ihtimal[rand()%4];
+                }
+                if(cevap_anahtari[i]=='C')
+                {
+                    char yanlis_ihtimal[5]= {'A','B','D','E'};
+                    ogrenci_cevaplari[i][j]=yanlis_ihtimal[rand()%4];
+
+                }
+                if(cevap_anahtari[i]=='D')
+                {
+                    char yanlis_ihtimal[5]= {'A','B','C','E'};
+                    ogrenci_cevaplari[i][j]=yanlis_ihtimal[rand()%4];
+                }
+                if(cevap_anahtari[i]=='E')
+                {
+                    char yanlis_ihtimal[5]= {'A','B','C','D'};
+                    ogrenci_cevaplari[i][j]=yanlis_ihtimal[rand()%4];
+                }
+            }
+        }
+
+
+    }
+
+}
+
+
+3.AKLIMA GELEN YOL
+void sinavi_uygula(char ogrenci_cevaplari[][100],char cevap_anahtari[],int N,int S,double D,double B)
+{
+    srand(time(0));
+    int i,k,j;
+    char rastgele[100];
+    int bos,dogru,yanlis;
+    bos=B*100;
+    dogru=D*100;
+    yanlis=100-(B+D);
+
+    for(int i=0; i<bos; i++)
+        rastgele[i]='X';
+    for(int j=0; j<bos+yanlis; j++)
+    {
+        if(cevap_anahtari[i+j]=='A')
+        {
+            char yanlis_ihtimal[5]= {'B','C','D','E'};
+            rastgele[i+j]=yanlis_ihtimal[rand()%4];
+        }
+        else if(cevap_anahtari[i+j]=='B')
+        {
+            char yanlis_ihtimal[5]= {'A','C','D','E'};
+            rastgele[i+j]=yanlis_ihtimal[rand()%4];
+        }
+        else if(cevap_anahtari[i+j]=='C')
+        {
+            char yanlis_ihtimal[5]= {'A','B','D','E'};
+            rastgele[i+j]=yanlis_ihtimal[rand()%4];
+        }
+        else if(cevap_anahtari[i+j]=='D')
+        {
+            char yanlis_ihtimal[5]= {'A','B','C','E'};
+            rastgele[i+j]=yanlis_ihtimal[rand()%4];
+        }
+        else if(cevap_anahtari[i+j]=='E')
+        {
+            char yanlis_ihtimal[5]= {'A','B','C','D'};
+            rastgele[i+j]=yanlis_ihtimal[rand()%4];
+        }
+    }
+
+    for(int k=i+j; k<dogru+bos+yanlis; k++)
+        rastgele[k]=cevap_anahtari[k];
+
+    for(i=0; i<N; i++)
+    {
+        for(j=0; j<S; j++)
+            ogrenci_cevaplari[i][j]=rastgele[rand()%99];
+    }
+    printf("\nOGRENCILERIN CEVAPLARI:");
+    for(int i=1; i<=ogrenci_ID; i++)
+    {
+        printf("\n %0.3d:",i);
+        for(int j=1;j<=S;j++)
+        {
+             printf(" %c  |",ogrenci_cevaplari[i][j]);
+        }
+    }
+
+}
+4. AKLIMA GELEN YOL
+void sinavi_uygula(char ogrenci_cevaplari[][100],char cevap_anahtari[],int N,int S,double D,double B)
+{
+    char ihtimaller[5];
+    int rastgele=0,ogrenci_ID=0,i;
+    for(int i=0;i<S;i++)
+    {
+
+        switch(cevap_anahtari[i])
+        {
+        case 'A':
+            ihtimaller[0]='B';
+            ihtimaller[1]='C';
+            ihtimaller[2]='D';
+            ihtimaller[3]='E';
+            break;
+        case 'B':
+            ihtimaller[0]='A';
+            ihtimaller[1]='C';
+            ihtimaller[2]='D';
+            ihtimaller[3]='E';
+            break;
+        case 'C':
+            ihtimaller[0]='A';
+            ihtimaller[1]='B';
+            ihtimaller[2]='D';
+            ihtimaller[3]='E';
+            break;
+        case 'D':
+            ihtimaller[0]='A';
+            ihtimaller[1]='C';
+            ihtimaller[2]='B';
+            ihtimaller[3]='E';
+            break;
+        case 'E':
+            ihtimaller[0]='A';
+            ihtimaller[1]='C';
+            ihtimaller[2]='D';
+            ihtimaller[3]='B';
+            break;
+            rastgele=rand()%100;
+
+            if(rastgele<(B*100))
+                ogrenci_cevaplari[ogrenci_ID][i]=cevap_anahtari[i];
+            else if((99-(D*100)<rastgele) && (rastgele<100))
+                ogrenci_cevaplari[ogrenci_ID][i]=cevap_anahtari[i];
+            else
+                for(int i=0; i<S; i++)
+                    ogrenci_cevaplari[ogrenci_ID][i]=ihtimaller[rand()%4];
+            ogrenci_cevabi_yazdir(ogrenci_cevaplari,ogrenci_ID,S);
+            ogrenci_ID++;
+        }
+    }
+
+}
+ogrenci_cevabi_yazdir(char ogrenci_cevaplari[][100],int ogrenci_ID,int S)
+{
+        printf("\n%0.3d ID'li ogrencinin cevaplari:\n",ogrenci_ID+1);
+        int i;
+        for(int i=0;i<S;i++);
+        {
+            printf("%0.3d: %c |",i+1,ogrenci_cevaplari[ogrenci_ID][i]);
+            if((i%10==9) && (i!=S-1))
+                printf("\n");
+        }
+}
+
+
+  0<=42.5
+42.5<=47.5
+47.5<=52.5
+52.5<=57.5
+57.5<=62.5
+62.5<=70.0
+70.0<=80
+80.0<=100
+
+
+
+
+
+
+
+void sinavi_uygula(char ogrenci_cevaplari[][100], char cevap_anahtari[], int N, int S, double B,double D)
+{
+    int i,j;
+    int ogrenci_ID;
+    srand(time(0));
+    char cevaplar[7]={'A','B','C','D','E','X'};
+
+    double bos=B*N*S;
+    double dogru=D*S*N;
+    int bossayac=0;
+    int dogrusayac=0;
+    int a=rand()%N;
+    int b=rand()%S;
+
+
+    for(i=0; i<N; i++)
+    {
+        for(j=0; j<S; j++)
+        {
+            ogrenci_cevaplari[i][j]=cevaplar[rand()%6];
+            if(ogrenci_cevaplari[i][j]=='X')//aynı anda hemn ogrenci_cevaplari nin icini doldurup hem sayacla kac bos ve dogru oldugunu tutabiliriz.
+                bossayac++;
+            if(ogrenci_cevaplari[i][j]==cevap_anahtari[i])
+                dogrusayac++;
+        }
+    }
+    printf("\nbos %lf \n dogru %lf \n",bos,dogru);
+   /* if(bossayac<bos)
+    {
+
+        //(ogrenci_cevaplari[a][b]=='X')?(;):(ogrenci_cevaplari[a][b]==cevap_anahtari[b])?(dogrusayac--):(ogrenci_cevaplari[a][b]='X' bossayac++)
+
+        if(ogrenci_cevaplari[a][b]==cevap_anahtari[b])//dogru ya da yanlis
+        {
+            dogrusayac--;
+            ogrenci_cevaplari[a][b]='X';
+            bossayac++;
+        }
+    }*/
+    if(bossayac<bos && dogrusayac>dogru)
+    {
+        if(ogrenci_cevaplari[a][b]=='X')
+        {
+            ogrenci_cevaplari[a][b]=cevap_anahtari[b];
+            dogrusayac++;
+            bossayac--;
+        }
+    }
+   /* if(dogrusayac<dogru)
+    {
+         if(ogrenci_cevaplari[a][b]==cevap_anahtari[b])
+                     ;
+         else if(ogrenci_cevaplari[a][b]=='X')
+                     ;
+         else{
+        ogrenci_cevaplari[a][b]=cevap_anahtari[b];
+        dogrusayac++;
+         }
+
+    }*/
+    else if(dogrusayac<=dogru && bossayac<=bos )
+    {
+        if(ogrenci_cevaplari[a][b]!='X' || ogrenci_cevaplari[a][b]!=cevap_anahtari[b])
+        {
+            if(cevap_anahtari[b]=='A')
+            {
+                char yeni[5]= {'B','C','D','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='B')
+            {
+                char yeni[5]= {'A','C','D','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='C')
+            {
+                char yeni[5]= {'B','A','D','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='D')
+            {
+                char yeni[5]= {'B','C','A','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='E')
+            {
+                char yeni[5]= {'B','C','D','A'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+        }
+    }
+    for(ogrenci_ID=0;ogrenci_ID<N;ogrenci_ID++)
+    {
+        ogrenci_cevabini_yazdir(ogrenci_cevaplari,ogrenci_ID, S);//ogrenci_ID i tek tek gönderebilmek icin yaptim1
+    }
+
+}
+
+
+
+
+
+
+
+HALİME İCİN YAZDİGİM KOD:
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+
+
+
+void cevap_anahtari_uret(char cevap_anahtari[], int S)
+{
+    int i,j;
+    srand(time(0));
+    char secenekler[6]= {'A','B','C','D','E'}; //GELECEK IHTIMALLER
+    for(i=0; i<S; i++)
+    {
+        cevap_anahtari[i]=secenekler[rand()%5];
+    }
+
+}
+
+void cevap_anahtari_yazdir(char cevap_anahtari[], int S)
+{
+    for(int i=0; i<S; i++)
+    {
+        printf("%.3d = %c| ",i+1,cevap_anahtari[i]);
+        if(i%10==9)//her 10 soruda bir satır alta gecsin
+        printf("\n");
+    }
+}
+void sinavi_uygula(char ogrenci_cevaplari[][100], char cevap_anahtari[], int N, int S, double B,double D)
+{
+    int i,j;
+    int ogrenci_ID;
+    srand(time(0));
+    char cevaplar[7]={'A','B','C','D','E','X'};
+
+    double bos=B*N*S;
+    double dogru=D*S*N;
+    int bossayac=0;
+    int dogrusayac=0;
+    int a=rand()%N;
+    int b=rand()%S;
+
+
+    for(i=0; i<N; i++)
+    {
+        for(j=0; j<S; j++)
+        {
+            ogrenci_cevaplari[i][j]=cevaplar[rand()%6];
+            if(ogrenci_cevaplari[i][j]=='X')//aynı anda hemn ogrenci_cevaplari nin icini doldurup hem sayacla kac bos ve dogru oldugunu tutabiliriz.
+                bossayac++;
+            if(ogrenci_cevaplari[i][j]==cevap_anahtari[i])
+                dogrusayac++;
+        }
+    }
+    printf("\nbos %lf \n dogru %lf \n",bos,dogru);
+     for(i=0; i<N; i++)
+    {
+        for(j=0; j<S; j++)
+        {
+            b=rand()%S;
+            if((bossayac<bos) && (dogrusayac>dogru) && (ogrenci_cevaplari[i][b]==cevap_anahtari[b]))
+            {
+                ogrenci_cevaplari[i][b]='X';
+                dogrusayac--;
+                bossayac++;
+            }
+            else if((bossayac>bos) && (dogrusayac<dogru) && (ogrenci_cevaplari[i][b]=='X'))
+            {
+                ogrenci_cevaplari[i][b]=cevap_anahtari[b];
+                dogrusayac++;
+                bossayac--;
+            }
+            else if((bossayac<=bos && dogrusayac<=dogru)   &&    (ogrenci_cevaplari[a][b]!='X' && ogrenci_cevaplari[a][b]!=cevap_anahtari[b]))
+            {
+                a=rand()%N;
+                b=rand()%S;
+                if(cevap_anahtari[b]=='A')
+                {
+                    char yeni[5]= {'B','C','D','E'};
+                    ogrenci_cevaplari[a][b]=yeni[rand()%4];
+                }
+                if(cevap_anahtari[b]=='B')
+                {
+                    char yeni[5]= {'A','C','D','E'};
+                    ogrenci_cevaplari[a][b]=yeni[rand()%4];
+                }
+                if(cevap_anahtari[b]=='C')
+                {
+                    char yeni[5]= {'B','A','D','E'};
+                    ogrenci_cevaplari[a][b]=yeni[rand()%4];
+                }
+                if(cevap_anahtari[b]=='D')
+                {
+                    char yeni[5]= {'B','C','A','E'};
+                    ogrenci_cevaplari[a][b]=yeni[rand()%4];
+                }
+                if(cevap_anahtari[b]=='E')
+                {
+                    char yeni[5]= {'B','C','D','A'};
+                    ogrenci_cevaplari[a][b]=yeni[rand()%4];
+                }
+            }
+        }
+    }
+        /*for(i=0; i<N; i++)
+        {
+        for(j=0; j<S; j++)
+        {
+            a=rand()%N;
+            b=rand()%S;
+            if((bossayac<=bos && dogrusayac<=dogru)   &&    (ogrenci_cevaplari[a][b]!='X' && ogrenci_cevaplari[a][b]!=cevap_anahtari[b]))
+            {
+                    if(cevap_anahtari[b]=='A')
+            {
+                char yeni[5]= {'B','C','D','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='B')
+            {
+                char yeni[5]= {'A','C','D','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='C')
+            {
+                char yeni[5]= {'B','A','D','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='D')
+            {
+                char yeni[5]= {'B','C','A','E'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            if(cevap_anahtari[b]=='E')
+            {
+                char yeni[5]= {'B','C','D','A'};
+                ogrenci_cevaplari[a][b]=yeni[rand()%4];
+            }
+            }
+        }
+    }*/
+    for(ogrenci_ID=0;ogrenci_ID<N;ogrenci_ID++)
+    {
+        ogrenci_cevabini_yazdir(ogrenci_cevaplari,ogrenci_ID, S);//ogrenci_ID i tek tek gönderebilmek icin yaptim
+    }
+
+}
+
+
+void ogrenci_cevabini_yazdir(char ogrenci_cevaplari[][100], int ogrenci_ID, int S)
+{
+    int i,j;
+    //if(ogrenci_ID!=10)
+    {
+        printf("\n%.3d. ogrenci\n ",ogrenci_ID+1);
+        for(j=0; j<S; j++)
+        {
+            printf(" %0.3d = %c | ",j+1,ogrenci_cevaplari[i][j]);
+        }
+    }
+
+}
+
+
+
+
+int main()
+{
+    //max 100 ogrenci icin,N=ogrencý sayýsý S=soru sayýsý
+    int N,S,ogrenci_ID;
+    double B,D;
+    printf("OGRENCI SAYISI KAC OLSUN (max 100):");
+    scanf("%d",&N);
+    printf("SORU SAYISI KAC OLSUN(max 100):");
+    scanf("%d",&S);
+    char cevap_anahtari[S];
+    printf(" BOS BIRAKMA IHTIMALI:");
+    scanf("%lf",&B);
+    printf(" DOGRU YAPMA IHTIMALI:");
+    scanf("%lf",&D);
+
+    ogrenci_ID=N;
+    printf("\nCevap anahtari\n\n");
+
+    cevap_anahtari_uret(cevap_anahtari,S);
+    cevap_anahtari_yazdir(cevap_anahtari,S);
+    char ogrenci_cevaplari[N][S];
+
+   sinavi_uygula(ogrenci_cevaplari,cevap_anahtari,N,S,B,D);
+   ogrenci_cevabini_yazdir(ogrenci_cevaplari,N,S);
+
+
+    return 0;
+}

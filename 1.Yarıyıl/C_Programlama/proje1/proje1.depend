@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1670953436 source:c:\users\zehra\desktop\proje1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1670957774 source:c:\users\zehra\desktop\yeni klasör\proje1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
