@@ -1,0 +1,61 @@
+CREATE TABLE Musteri (
+    musteriID INT AUTO_INCREMENT PRIMARY KEY,
+    musteriAdi CHAR(100),
+    musteriAdresi CHAR(200)
+);
+
+
+ MySQL returned an empty result set (i.e. zero rows). (Query took 0.0038 seconds.)
+
+
+CREATE TABLE teslimatBilgileri (
+    teslimatId INT AUTO_INCREMENT PRIMARY KEY,
+    musteriID INT,
+    teslimatSevkiyatNoktası CHAR(100),
+    teslimatTürü CHAR(50),
+    planlananTarih DATE,
+    teslimatTermini DATE,
+    FOREIGN KEY (musteriID) REFERENCES Musteri(MusteriID)
+);
+
+MySQL returned an empty result set (i.e. zero rows). (Query took 0.0145 seconds.)
+
+CREATE TABLE teslimatBilgileriKalemi (
+    teslimatBilgisiID INT AUTO_INCREMENT PRIMARY KEY,
+    teslimatId INT,
+    malzemeID INT NULL,
+    malzemeGrupId INT NULL,
+    teslimatBilDepoID INT,
+    teslimatBilUretimYeri CHAR(100),
+    FOREIGN KEY (teslimatId) REFERENCES teslimatBilgileri(teslimatId)
+);
+
+ MySQL returned an empty result set (i.e. zero rows). (Query took 0.0204 seconds.)
+
+CREATE TABLE nakliye (
+    nakliyeID INT AUTO_INCREMENT PRIMARY KEY,
+    teslimatBilgisiId INT,
+    nakliyeYüklemeSaatiBaslangici DATETIME,
+    nakliyeYüklemeSaatiBitisi DATETIME,
+    FOREIGN KEY (teslimatBilgisiId) REFERENCES teslimatBilgileriKalemi(teslimatBilgisiID)
+);
+
+ MySQL returned an empty result set (i.e. zero rows). (Query took 0.0171 seconds.)
+
+
+SELECT 
+    nakliye.nakliyeID,
+    nakliye.teslimatBilgisiId,
+    nakliye.nakliyeYüklemeSaatiBaslangici,
+    nakliye.nakliyeYüklemeSaatiBitisi,
+    teslimatBilgileriKalemi.teslimatBilgisiID,
+    teslimatBilgileriKalemi.teslimatId,
+    teslimatBilgileriKalemi.malzemeID,
+    teslimatBilgileriKalemi.malzemeGrupId,
+    teslimatBilgileriKalemi.teslimatBilDepoID,
+    teslimatBilgileriKalemi.teslimatBilUretimYeri
+FROM nakliye
+RIGHT JOIN teslimatBilgileriKalemi ON nakliye.teslimatBilgisiId = teslimatBilgileriKalemi.teslimatBilgisiID;
+
+
+

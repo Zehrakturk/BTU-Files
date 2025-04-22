@@ -1,0 +1,74 @@
+/* Genel stiller */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin-top: 0;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.logo {
+    padding-left: 550px;
+}
+
+.baslik {
+    float: right;
+    text-align: center;
+}
+
+/* Etkinlik Bilgileri */
+.etkinlik-bilgileri {
+    padding: 20px;
+    margin:30px;
+    margin-left: 300px;
+    border: 6px solid #100f0f;
+    background-color: cornflowerblue;
+    margin-right:300px;
+    border-radius: 5px;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+div.tarih{
+    margin-right:950px;
+    background-color: darkgrey;
+
+}
+
+/* Footer */
+footer {
+    background-color: #ddd;
+    padding: 10px;
+    text-align: center;
+}

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1700738689 source:c:\users\halim\onedrive\masaüstü\kodlar\veri222odev\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

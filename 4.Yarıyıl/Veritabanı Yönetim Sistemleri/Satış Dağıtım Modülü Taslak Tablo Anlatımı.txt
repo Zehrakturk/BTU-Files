@@ -1,0 +1,104 @@
+1)Satış ve Dağıtım Modülü nedir? 
+
+SAP SD modülü, SAP Enterprise Resource Planning (ERP) yazılımının bir parçasıdır ve satış ve dağıtım süreçlerini yönetmek için tasarlanmıştır. Bu modül, müşteri siparişlerinin alınmasından, ürünlerin sevkiyat planlamasına ve faturalandırılmasına kadar olan süreçleri kapsamaktadır.
+
+Satış modülü olası müşteriler ve müşterilerle olan iletişimleri takip eder ve temsilcilerin doğru promosyonlar ve yukarı satış fırsatları ile satış ve hedef duyumları artırmak için veri odaklı iç görülerden yararlanmasına yardımcı olur. Sipariş yönetimi, sözleşmeler, faturalama, satış performansı yönetimi ve satış ekibi desteği dahil olmak üzere siparişten nakde sürecine yönelik işlevler içerir.
+
+
+
+2) Nakliye Tablosu;
+
+Nakliye id: Her nakliye için farklı id olmalıdır. Primary Key olmalıdır. Tamsayı olarak tutulur.
+
+Teslimat No: Teslimat bilgileri tablosundaki id ile birleştirilir. Ve teslimat bilgileri tablosundaki id foreign key olur.
+
+Yükleme saati başlangıcı: Ulaştıracak olan araca yüklemenin başladığı saat.
+
+Yükleme saati bitişi: Ulaştıracak araca yükleme saati bitişi.
+
+
+
+3) Teslimat Bilgileri Tablosu;
+
+Teslimat id: Her teslimat için farklı bir teslimat id olmalıdır. Bu tablonun Primary Key'i dir. Tamsayı olarak tutulur.
+
+Sevkiyat noktası: Her depoda aracın yüklendiği kapının tanımı farklıdır. Bu alan daki bilgi ile depo bilgisine ulaşılabilir. String şeklinde tutulur.
+
+Satış Organizasyon: Teslimatın şirketin hangi markasından yapıldığı bilgisini tutar.
+
+Teslimat türü: Teslimat tipini belirtir. Örneğin şirketin kendi depoları arası transfer olabilir, bir de müşteriye transfer olabilir.
+
+Planlanan tarih: Teslimatın ne zaman depodan çıkarılacağı bilgisini tutar. Date veri tipinde tutulur.
+
+Teslimat Termini: Tahmini teslim tarihi bilgisini tuutar. Date veri tipi şeklinde tutulur.
+
+Teslim Alacak : Teslimatın hangi şirkete ulaşacağı bilgisini tutar. Müşteri tablosundaki Müşteri adı kısmı ile ilişkilendirilir. String şeklinde tutulur. Bu bilgi için 50 karakter yeterlidir.
+
+
+
+4) Müşteri Tablosu;
+
+Müşteri id: Her müşteri için benzersiz bir id olmalıdır. Bu tablonun Primary Key'i olacaktır. int veri tipi ile tutulur.
+
+Müşteri Adı: Genellikle şirket ismi olarak tutulur. Ancak ad soyad olarak da tutulabilir. Şirkete ve sektöre göre değişiklik gösterebilir. String veri tipi ile tutulması gerekir. Şirket ismi bilgisi içeriyorsa 50 karakter. Kişi ad soyadını içeriyorsa 20 karakter yeterlidir.
+
+Şehir: Müşterinin bulunduğu şehir bilgisini içerir. String olarak tutulur. 20 karakter yeterlidir. Adres bilgisi olarak da tutulabilir.
+
+
+
+5) Teslimat Verileri Kalemi;
+
+Teslimat Kalemi id: Her teslimat kalemi için benzersiz bir id olmalıdır. Bu tablonun Primary Key'i olacaktır. int veri tipi ile tutulur.
+
+Teslimat no: Teslimat bilgileri tablosundaki teslimat id ile eşleşir.
+
+Malzeme no: Bu alan başka bir modül kapsamında olan ürün tablosundaki ürün id ile eşleşir. Ve bu tabloda Foreign Key halini alır.
+
+Malzeme ismi: Satılan her ürünün malzeme ismi vardır. Satış Dağıtım modülü dışında başka bir modülde tutulan ürün tablosu ile eşleşir.
+
+Malzeme grubu: Ürün tablosundaki malzeme grubu ile eşleşir. Örneğin süt ürünleri grubunda yoğurt, kefir peynir gibi bir çok ürün bulunur. Ürünler bu şekilde gruplandırılmıştır ve bu alan da grup bilgisini tutar.
+
+Üretim yeri: Ürünün üretim yerinin bilgisini tutar. Genellikle fabrika ismine karşılık gelir. Ve string olarak tutulur. 
+
+Depo yeri: Ürünün sevkiyattan önce hangi depoda tutulacağı bilgisini içerir. Yani sevkiyata hangi lokasyondan başlanacağını gösterir. Char olarak tutulur.
+
+Satış Miktarı: Ürün hangi ölçü birimi ile satılıyorsa o birimden kaç adet sipariş edildiğini gösterir. Tamsayı olarak tutulmalıdır.
+
+Satış Ölçü Birimi: Ürünlerin satış ölçü birimleri değişebilir. Örneğin bir elma kg ile satılırken bir bilgisayar adet ile satılır, bazı ürünler de koli cinsinden satılır. Bu bilgi ürün tablosundan gelir.
+
+
+
+6) İlişkiler: Birden fazla ürün birden fazla teslimat olabilmektedir. Bundan dolayı Ürün Tablosu ile Teslimat Bilgisi tablosu arasında 3. bir tablo olan Teslimat Kalemi Verileri oluşturulmuştur. N:M ilişkisi vardır.
+
+Teslimat bilgileri ile Müşteri Tablosu arasındaki ilişki 1: N'dir. bir teslimatın mutlaka bir müşterisi olmalıdır. Bir müşterinin ise birden çok teslimatı olabilir.
+
+
+
+Tablo ilişkileri temsili olarak gösterilmiştir.
+
+7) Nakliye, Teslimat Bilgileri ve Müşteri Tabloları ilişkileri
+
+Nakliye Tablosu        Teslimat Bilgileri Tablosu                         Müşteri Tablosu          
+
+Teslimat no->>>>>>>>>>>Teslimat id                                          Müşteri id
+
+                                             Teslim Alacak->>>>>>>>>>>>>>>>>Müşteri Adı
+
+8) Ürün Tablosu , Teslimat Kalemi Tablosu ve Teslimat bilgileri Tablosu ilişkileri
+
+Ürün Tablosu                          Teslimat Kalemi Verileri Tablosu                      Teslimat bilgileri Tablosu
+
+Ürün id  ->>>>>>>>>>>>>>>> Malzeme no
+
+                                                   Teslimat no <<<<<<<<<<<<<<<<<<<<<<<<<<<- Teslimat id 
+
+Ürün Grubu ->>>>>>>>>>>>> Malzeme Grubu
+
+Ürün Adı ->>>>>>>>>>>>>>> Malzeme ismi 
+
+Satış ölçü birimi ->>>>>>>> Satış Ölçü Birim
+
+
+Not: İlişkiler ve tablolar taslak olarak hazırlanmıştır. Proje içerisinde değişiklikler olabilir.
+Gönderen: Zehra Aktürk 21360859049
+Proje konusu: ERP
